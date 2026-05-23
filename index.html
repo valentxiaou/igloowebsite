@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta chaarset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igloo Discord Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Space+Grotesk:wght=500;700&family=Fira+Code:wght=400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-igloo" style="color: #00b4d8;"></i>
+            <span>IGLOO</span>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#stats">Stats</a>
+            <a href="#about">About Frosty</a>
+            <a href="#staff">Staff Team</a>
+            <a href="#benefits">Supporter</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Igloo <span class="highlight">A Warm Place</span></h1>
+            <p>Feel the fresh and cozy aroma inside the frost. Enjoy your stay at the winter fields, Igloo Discord server is a friendly space for everyone ❄️</p>
+            <div class="hero-buttons">
+                <a href="https://discord.gg/igloo" target="_blank" class="btn btn-primary"><i class="fa-brands fa-discord"></i> Join Now!</a>
+                <a href="#stats" class="btn btn-secondary">Explore More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats-container">
+        <div class="main-stats">
+            <div class="stat-box">
+                <i class="fa-solid fa-heart-circle-check"></i>
+                <h2>30+</h2>
+                <p>Total Donators</p>
+                <span>Our incredible supporters who help keep the server running!</span>
+            </div>
+            <div class="stat-box highlighted-box">
+                <i class="fa-solid fa-users"></i>
+                <h2>1500+</h2>
+                <p>Active Members</p>
+                <span>Join our growing community and be a part of the fun!</span>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-gem"></i>
+                <h2>12+</h2>
+                <p>Boosters</p>
+                <span>Amazing members who boost our cozy server!</span>
+            </div>
+        </div>
+
+        <div class="sub-stats">
+            <div class="sub-box"><i class="fa-solid fa-circle" style="color: #00f5d4;"></i> <span>245</span> <span>Online Users</span></div>
+            <div class="sub-box"><i class="fa-solid fa-hashtag"></i> <span>35</span> <span>Channels</span></div>
+            <div class="sub-box"><i class="fa-solid fa-bolt"></i> <span>Level 2</span> <span>Server Boosts</span></div>
+            <div class="sub-box"><i class="fa-solid fa-face-smile"></i> <span>140</span> <span>Emojis</span></div>
+            <div class="sub-box"><i class="fa-solid fa-shield-cat"></i> <span>90</span> <span>Roles</span></div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-card">
+            <img src="https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/fd51cab8-0575-45dd-a5c2-d02c47a411bf.png" alt="Frosty Mascot" class="mascot-img">
+            <div class="mascot-socials">
+                <a href="https://discord.gg/igloo" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="about-text">
+            <span class="badge">Official Server Bot</span>
+            <h2>Welcome to <span class="highlight">Frosty Zone</span></h2>
+            <p>Welcome to <strong>Igloo</strong>, a cozy hangout spot for anyone who loves games, anime, and all things cute. Our community is a warm and friendly place where you can share your interests, make new friends, and have fun together.</p>
+            <p>Our official custom mascot <strong>Frosty</strong> embodies that spirit—cheerful, welcoming, and always ready to greet new friends with a smile. ☃️</p>
+            <a href="#" class="btn btn-secondary-outline">> ABOUT <</a>
+        </div>
+    </section>
+
+    <section id="staff" class="staff-section">
+        <div class="section-title">
+            <h2>Our <span class="highlight">Staff Team</span></h2>
+            <p>This is a list of the people who are currently working and managing the server.</p>
+        </div>
+        
+        <div id="hierarchyContainer"></div>
+    </section>
+
+    <section id="benefits" class="benefits-section">
+        <div class="benefit-card">
+            <h3><i class="fa-solid fa-star highlight"></i> Benefit of Server Supporter</h3>
+            <ul>
+                <li><strong>01. EXCLUSIVE ROLES:</strong> Get exclusive roles and nicknames in our Discord server.</li>
+                <li><strong>02. DONATOR LIST:</strong> List of our members donations hall of fame.</li>
+                <li><strong>03. SERVER PERKS:</strong> A lot of exclusive custom commands and roles perks you can have.</li>
+                <li><strong>04. PRIORITY SUPPORT:</strong> Get priority support from our active staffs.</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card">
+            <button class="btn-close" onclick="closeModal()">Close</button>
+            <img src="" alt="" class="modal-img" id="modalImg">
+            <h2 class="modal-name" id="modalName">Name</h2>
+            <p class="modal-bio" id="modalBio">"A cozy soul in the icy field"</p>
+            <div class="modal-tags" id="modalTags"></div>
+            <div class="modal-socials">
+                <a href="https://discord.gg/igloo" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Igloo Discord Server. Built with Ice and Magic.
+    </footer>
+
+    <script>
+        // --- DATA & OPERASI STAFF HIERARCHY ---
+        const structuredStaff = {
+            "Owner": [
+                { name: "Latif", bio: "The Creator and Founder of this Warm Place.", roles: ["Owner", "Founder"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/da6a64b7-bb82-4f04-80a0-495f56166a19.jpg" }
+            ],
+            "Co Owner": [
+                { name: "Valent", bio: "Co-founding, styling the frost fields, and working as an experienced Roblox Developer.", roles: ["Co Owner", "Roblox Dev"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/ddac6027-3dd2-4091-a55d-eec039c346cb.jpg" },
+                { name: "Fawell", bio: "Managing high-level operations across Igloo and developing core systems as a Bot & Minecraft Developer.", roles: ["Co Owner", "Bot Dev", "MC Dev"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/c39da694-625b-4588-8788-06497e44ad68.jpg" }
+            ],
+            "Antartica Overseer": [
+                { name: "Bila", bio: "Multi-talented server core manager.", roles: ["Overseer", "Media", "Event", "Partner"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/1ea8cbeb-3dd7-4837-871f-a58e54c4978b.jpg" },
+                { name: "Irvine", bio: "Watching over the frost carefully.", roles: ["Overseer"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/b42ab56a-0355-46c9-a36c-4c4cef373532.jpg" }
+            ],
+            "Moderator": [
+                { name: "leeya", bio: "Keeping peace in the winter wonderland.", roles: ["Moderator", "Event", "Partner"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/a6b972b9-fb49-419a-9da9-3ea826fa83e6.jpg" }
+            ],
+            "Arctic Rulers": [
+                { name: "Zid", bio: "Ruling the coldest zones fairly.", roles: ["Arctic Rulers"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/3a56f525-f7fe-4c51-88f2-66663a5b7a7c.jpg" },
+                { name: "Chia", bio: "Enforcing stability with style.", roles: ["Arctic Rulers"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/76d955fa-720f-4aeb-8722-eb170dcd2307.jpg" }
+            ],
+            "Community Manager": [
+                { name: "Ashley", bio: "Connecting hearts across the server.", roles: ["Community Manager"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/1be09ce1-fcc4-410a-b866-571ffe078280.jpg" }
+            ],
+            "Staff Helper": [
+                { name: "chaar", bio: "Always here to guide and lend a hand.", roles: ["Staff Helper", "Media"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/15397df5-506c-4ff9-b775-846d53778aff.jpg" },
+                { name: "Shenku", bio: "Supporting the team and helping members.", roles: ["Staff Helper"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/363b4b3b-f52f-46ab-a221-88b2fd420e35.jpg" },
+                { name: "Raa", bio: "Spreading warm vibes inside the cold.", roles: ["Staff Helper"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/95eb045b-76fa-4120-99aa-99bc3a429ddc.jpg" }
+            ],
+            "Host Nobar": [
+                { name: "Chayza", bio: "Popcorn's ready! Ready to stream your favorite shows.", roles: ["Host Nobar"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/f4314bf2-f862-4282-954e-f7eb52e1a005.jpg" },
+                { name: "chaar", bio: "Cinema enthusiast and your favorite stream buddy.", roles: ["Staff Helper", "Media", "Host Nobar"], avatar: "https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/15397df5-506c-4ff9-b775-846d53778aff.jpg" }
+            ]
+        };
+
+        const roleStyleMap = {
+            "Owner": "color-owner",
+            "Co Owner": "color-coowner",
+            "Antartica Overseer": "color-overseer",
+            "Moderator": "color-mod",
+            "Arctic Rulers": "color-highmod",
+            "Community Manager": "color-manager",
+            "Staff Helper": "color-helper",
+            "Host Nobar": "color-host"
+        };
+
+        const hierarchyContainer = document.getElementById('hierarchyContainer');
+        hierarchyContainer.innerHTML = '';
+
+        for (const [roleName, members] of Object.entries(structuredStaff)) {
+            const styleClass = roleStyleMap[roleName] || '';
+            
+            let groupHTML = `
+                <div class="role-group-container">
+                    <div class="group-label">${roleName}</div>
+                    <div class="staff-grid">
+            `;
+
+            members.forEach(member => {
+                groupHTML += `
+                    <div class="staff-card" onclick="openModal('${member.name}', '${member.bio || ''}', '${member.avatar}', '${member.roles.join(',')}')">
+                        <img src="${member.avatar}" alt="${member.name}">
+                        <h3>${member.name}</h3>
+                        <span class="role-mini-tag ${styleClass}">${roleName}</span>
+                    </div>
+                `;
+            });
+
+            groupHTML += `
+                    </div>
+                </div>
+            `;
+            
+            hierarchyContainer.innerHTML += groupHTML;
+        }
+
+        function openModal(name, bio, img, rolesStr) {
+            document.getElementById('modalName').innerText = name;
+            document.getElementById('modalBio').innerText = bio ? `"${bio}"` : '"A cozy soul in the icy field"';
+            document.getElementById('modalImg').src = img;
+            
+            const tagsContainer = document.getElementById('modalTags');
+            tagsContainer.innerHTML = '';
+            rolesStr.split(',').forEach(r => {
+                if(r) tagsContainer.innerHTML += `<span class="modal-tag">${r}</span>`;
+            });
+            
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const overlay = document.getElementById('modalOverlay');
+            if (event.target == overlay) closeModal();
+        }
+
+        // --- CORE ENGINE: INTERACTIVE PARTICLES NETWORK ---
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let particlesArray = [];
+        const numberOfParticles = 85;
+
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 130
+        };
+
+        window.addEventListener('mousemove', function(event) {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        });
+
+        window.addEventListener('mouseout', function() {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 + 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.y > canvas.height) {
+                    this.y = 0;
+                    this.x = Math.random() * canvas.width;
+                }
+                if (this.x > canvas.width || this.x < 0) {
+                    this.x = Math.random() * canvas.width;
+                }
+
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        let forceDirectionX = dx / distance;
+                        let forceDirectionY = dy / distance;
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        let directionX = forceDirectionX * force * 2;
+                        let directionY = forceDirectionY * force * 2;
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    }
+                }
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 180, 216, 0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+    </script>
+</body>
+</html>

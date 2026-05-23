@@ -1,0 +1,688 @@
+/* BASE & SYSTEM STYLES (Aesthetic Blueprint Dark Theme) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #080d1a; /* Super Dark Ice Blue */
+    color: #f4f6f9;
+    overflow-x: hidden;
+    position: relative;
+    /* Efek Grid Pattern tipis di background agar mirip web referensi */
+    background-image: 
+        linear-gradient(rgba(0, 180, 216, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 180, 216, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* CANVAS UNTUK EFEK BINTIK-BINTIK GERAK */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+header, section, footer, .modal-overlay {
+    position: relative;
+    z-index: 1;
+}
+
+.font-header {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.highlight {
+    color: #00b4d8;
+    text-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
+}
+
+/* NAVBAR */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: rgba(8, 13, 26, 0.85);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 1px;
+}
+
+header nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+header nav a:hover {
+    color: #00b4d8;
+    text-shadow: 0 0 8px rgba(0, 180, 216, 0.6);
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    background: linear-gradient(rgba(8, 13, 26, 0.75), #080d1a), url('https://i.supaimg.com/cb52d4dd-b288-4772-bf6b-e9b42f712543/e65508c1-e6a6-401f-8455-018052dae5bf.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.12) 0%, transparent 70%);
+    top: 20%;
+    z-index: -1;
+}
+
+.hero-content h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    font-size: 15px;
+    color: #94a3b8;
+    max-width: 620px;
+    margin: 0 auto 35px auto;
+    line-height: 1.7;
+}
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.btn-primary {
+    background-color: #00b4d8;
+    color: #080d1a;
+    box-shadow: 0 4px 14px rgba(0, 180, 216, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #00f5d4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 245, 212, 0.4);
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 180, 216, 0.3);
+}
+
+.btn-secondary-outline {
+    border: 1px solid rgba(0, 180, 216, 0.4);
+    color: #00b4d8;
+    background: rgba(0, 180, 216, 0.02);
+}
+
+.btn-secondary-outline:hover {
+    background: rgba(0, 180, 216, 0.1);
+    color: #00f5d4;
+    border-color: #00f5d4;
+}
+
+/* STATS COUNTER SECTION */
+.stats-container {
+    padding: 60px 8%;
+}
+
+.main-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-box {
+    background: rgba(11, 19, 43, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    backdrop-filter: blur(4px);
+}
+
+.stat-box i {
+    font-size: 28px;
+    color: #00b4d8;
+    margin-bottom: 15px;
+}
+
+.stat-box h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    font-size: 15px;
+    font-weight: 600;
+    color: #cbd5e1;
+    margin-bottom: 10px;
+}
+
+.stat-box span {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.5;
+    display: block;
+}
+
+.highlighted-box {
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    background: linear-gradient(145deg, rgba(0, 180, 216, 0.03), rgba(8, 13, 26, 0.4));
+}
+
+.sub-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.sub-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 8px 20px;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+}
+
+.sub-box span:first-of-type {
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    color: #00f5d4;
+}
+
+/* ABOUT MASCOT SECTION */
+.about-section {
+    padding: 80px 8%;
+    display: flex;
+    align-items: flex-end;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.about-card {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 12px;
+    padding: 40px 30px 30px 30px;
+    text-align: center;
+    border: 1px solid rgba(0, 180, 216, 0.15);
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0, 180, 216, 0.05);
+    margin-top: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.about-card::before {
+    content: ''; position: absolute; top: -2px; left: -2px; width: 15px; height: 15px; border-top: 2px solid #00b4d8; border-left: 2px solid #00b4d8;
+}
+.about-card::after {
+    content: ''; position: absolute; bottom: -2px; right: -2px; width: 15px; height: 15px; border-bottom: 2px solid #00b4d8; border-right: 2px solid #00b4d8;
+}
+
+.mascot-img {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 24px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mascot-socials a {
+    color: #64748b;
+    font-size: 18px;
+    margin: 0 12px;
+    transition: color 0.3s;
+}
+
+.mascot-socials a:hover {
+    color: #00b4d8;
+}
+
+.about-text {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.badge {
+    background: rgba(0, 180, 216, 0.1);
+    border: 1px solid rgba(0, 180, 216, 0.2);
+    color: #00b4d8;
+    padding: 4px 14px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
+}
+
+.about-text h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 42px;
+    margin: 20px 0;
+    letter-spacing: -0.5px;
+}
+
+.about-text p {
+    color: #94a3b8;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+/* DYNAMIC STAFF HIERARCHY SECTION */
+.staff-section {
+    padding: 80px 8%;
+    background: rgba(8, 13, 26, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 38px;
+}
+
+.section-title p {
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.role-group-container {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.group-label {
+    display: inline-block;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    border-bottom: 2px dashed rgba(0, 180, 216, 0.3);
+}
+
+.staff-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.staff-card {
+    background: rgba(14, 23, 47, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+    width: 220px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(4px);
+}
+
+.staff-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 180, 216, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 180, 216, 0.15);
+    background: rgba(14, 23, 47, 0.9);
+}
+
+.staff-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s;
+}
+
+.staff-card:hover img {
+    border-color: #00b4d8;
+}
+
+.staff-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #f4f6f9;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.role-mini-tag {
+    display: inline-block;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.color-owner { color: #ff4d6d; border-color: rgba(255, 77, 109, 0.2); }
+.color-coowner { color: #00b4d8; border-color: rgba(0, 180, 216, 0.2); }
+.color-overseer { color: #9b5de5; border-color: rgba(155, 93, 229, 0.2); }
+.color-mod { color: #f15bb5; border-color: rgba(241, 91, 181, 0.2); }
+.color-highmod { color: #a2d2ff; border-color: rgba(162, 210, 255, 0.2); }
+.color-manager { color: #ffb703; border-color: rgba(255, 183, 3, 0.2); }
+.color-helper { color: #00f5d4; border-color: rgba(0, 245, 212, 0.2); }
+.color-host { color: #70e000; border-color: rgba(112, 224, 0, 0.2); }
+
+/* MODAL DETAIL POPUP */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+    display: none; justify-content: center; align-items: center; z-index: 2000;
+}
+.modal-card {
+    background: #0d152b; width: 350px; border-radius: 16px; padding: 30px;
+    border: 2px solid #00b4d8; text-align: center; position: relative;
+    box-shadow: 0 0 30px rgba(0, 180, 216, 0.25);
+    animation: modalIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes modalIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.btn-close { 
+    position: absolute; top: 15px; right: 15px; background: rgba(0, 180, 216, 0.15); color: #00b4d8;
+    border: 1px solid rgba(0, 180, 216, 0.3); padding: 5px 12px; border-radius: 4px; font-weight: 600; 
+    cursor: pointer; font-size: 11px; font-family: 'Space Grotesk', sans-serif; transition: 0.2s;
+}
+.btn-close:hover { background: #00b4d8; color: #080d1a; }
+.modal-img { width: 110px; height: 110px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #00b4d8; object-fit: cover; }
+.modal-name { font-family: 'Space Grotesk', sans-serif; font-size: 24px; margin-bottom: 8px; color: #f4f6f9; }
+.modal-bio { font-size: 13px; color: #94a3b8; margin-bottom: 20px; line-height: 1.6; padding: 0 10px; }
+.modal-tags { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.modal-tag { font-size: 10px; font-family: 'Fira Code', monospace; background: rgba(0, 180, 216, 0.08); color: #00b4d8; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(0, 180, 216, 0.2); text-transform: uppercase; }
+.modal-socials { display: flex; justify-content: center; gap: 20px; }
+.modal-socials a { color: #64748b; font-size: 20px; transition: color 0.3s; }
+.modal-socials a:hover { color: #00b4d8; }
+
+/* SUPPORTER BENEFITS SECTION */
+.benefits-section {
+    padding: 80px 8%;
+    display: flex;
+    justify-content: center;
+}
+
+.benefit-card {
+    background: rgba(14, 23, 47, 0.5);
+    border: 1px dashed rgba(0, 180, 216, 0.25);
+    border-radius: 8px;
+    padding: 45px;
+    max-width: 750px;
+    width: 100%;
+    position: relative;
+    backdrop-filter: blur(4px);
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 40px;
+    width: 90px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    transform: rotate(-2deg);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.benefit-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: #00b4d8;
+}
+
+.benefit-card ul {
+    list-style: none;
+}
+
+.benefit-card li {
+    margin-bottom: 18px;
+    font-size: 13.5px;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.benefit-card li strong {
+    font-family: 'Fira Code', monospace;
+    color: #f4f6f9;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    padding: 35px;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    font-size: 12px;
+    color: #475569;
+    font-family: 'Fira Code', monospace;
+}
+
+/* ==========================================================================
+   TAMPILAN RESPONSIF KHUSUS MOBILE (Media Queries)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    /* 1. NAVBAR MOBILE */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 5%;
+        text-align: center;
+    }
+
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    header nav a {
+        margin-left: 0;
+        padding: 5px 8px;
+    }
+
+    /* 2. HERO SECTION MOBILE */
+    .hero {
+        min-height: 90vh;
+        padding: 100px 20px 60px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 13.5px;
+        margin-bottom: 25px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+    /* 3. STATS MOBILE */
+    .stats-container {
+        padding: 40px 5%;
+    }
+
+    .main-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stat-box {
+        padding: 30px 20px;
+    }
+
+    .sub-stats {
+        gap: 10px;
+    }
+
+    .sub-box {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* 4. ABOUT MASCOT MOBILE */
+    .about-section {
+        padding: 50px 5%;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .about-card, .about-text {
+        width: 100%;
+        min-width: unset;
+        text-align: center;
+    }
+
+    .about-text h2 {
+        font-size: 30px;
+    }
+
+    /* 5. STAFF TEAM MOBILE */
+    .staff-section {
+        padding: 50px 5%;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    .staff-grid {
+        gap: 15px;
+    }
+
+    .staff-card {
+        width: 100%;
+        max-width: 165px;
+        padding: 15px 10px;
+    }
+    
+    .staff-card img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* 6. BENEFITS SECTION MOBILE */
+    .benefits-section {
+        padding: 40px 5%;
+    }
+
+    .benefit-card {
+        padding: 30px 20px;
+    }
+    
+    .benefit-card h3 {
+        font-size: 18px;
+    }
+
+    /* 7. MODAL POPUP MOBILE */
+    .modal-card {
+        width: 90%;
+        padding: 25px 20px;
+    }
+}
